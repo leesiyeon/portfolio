@@ -19,8 +19,14 @@ navbarMenu.addEventListener("click", (event) => {
   if (link == null) {
     return;
   }
-
+  navbarMenu.classList.remove("open");
   scrollIntoViews(link);
+});
+
+//navbar toogle btn 클릭 시 메뉴가 펼쳐지게 하기
+const navbarToggleBtn = document.querySelector(".navbar__toogle-btn");
+navbarToggleBtn.addEventListener("click", () => {
+  navbarMenu.classList.toggle("open");
 });
 
 //Home에 contact me 버튼 클릭 시 contact 영역으로 이동
@@ -34,6 +40,21 @@ const home = document.querySelector(".home__container");
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener("scroll", () => {
   home.style.opacity = 1 - window.scrollY / homeHeight;
+});
+
+//스크롤 될때 arrow up btn 표시
+const arrowUp = document.querySelector(".arrow-up");
+document.addEventListener("scroll", () => {
+  if (window.scrollY > homeHeight / 2) {
+    arrowUp.classList.add("visible");
+  } else {
+    arrowUp.classList.remove("visible");
+  }
+});
+
+// arrow Up btn 클릭 시 home으로 이동
+arrowUp.addEventListener("click", () => {
+  scrollIntoViews("#home");
 });
 
 function scrollIntoViews(selector) {
