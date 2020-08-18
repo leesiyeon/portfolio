@@ -120,6 +120,7 @@ h2 {
   padding: 16px;
   width: 100%;
   transition: all var(--animation-duration) ease-in;
+  z-index: 1;
 }
 
 #navbar.navbar--dark {

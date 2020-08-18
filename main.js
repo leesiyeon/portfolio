@@ -10,3 +10,26 @@ document.addEventListener("scroll", () => {
     navbar.classList.remove("navbar--dark");
   }
 });
+
+// navbar 메뉴 이동
+const navbarMenu = document.querySelector(".navbar__menu");
+navbarMenu.addEventListener("click", (event) => {
+  const target = event.target;
+  const link = target.dataset.link;
+  if (link == null) {
+    return;
+  }
+
+  scrollIntoViews(link);
+});
+
+//Home에 contact me 버튼 클릭 시 contact 영역으로 이동
+const homeContactBtn = document.querySelector(".home__contact");
+homeContactBtn.addEventListener("click", (event) => {
+  scrollIntoViews("#contact");
+});
+
+function scrollIntoViews(selector) {
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({ behavior: "smooth" });
+}
