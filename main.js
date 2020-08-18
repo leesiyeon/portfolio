@@ -29,6 +29,13 @@ homeContactBtn.addEventListener("click", (event) => {
   scrollIntoViews("#contact");
 });
 
+//스크롤 할때 마다 home 투명하게 만들기
+const home = document.querySelector(".home__container");
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener("scroll", () => {
+  home.style.opacity = 1 - window.scrollY / homeHeight;
+});
+
 function scrollIntoViews(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({ behavior: "smooth" });
